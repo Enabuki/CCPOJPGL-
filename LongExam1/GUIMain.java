@@ -1,4 +1,4 @@
-import java.awt.Color;
+import java.awt.Color;	
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -9,6 +9,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
+
 
 public class GUIMain extends JFrame {
 
@@ -20,9 +24,11 @@ public class GUIMain extends JFrame {
     }
 
     public GUIMain() {
+    
         setTitle("PORTFOLIO");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 450, 487);
+
         contentPane = new JPanel();
         contentPane.setBackground(new Color(222, 184, 135));
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -67,10 +73,10 @@ public class GUIMain extends JFrame {
         btnHobbies.setBounds(292, 369, 119, 40);
         contentPane.add(btnHobbies);
 
-        JLabel lblNewLabel_1 = new JLabel("New label");
-        lblNewLabel_1.setIcon(new ImageIcon("C:\\Users\\xxyynetworks\\Downloads\\bg.png"));
+        JLabel lblNewLabel_1 = new JLabel("");
+        lblNewLabel_1.setIcon(new ImageIcon("C:\\Users\\National University\\Downloads\\bg.png"));
         lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
-        lblNewLabel_1.setBounds(61, 62, 299, 271);
+        lblNewLabel_1.setBounds(-16, -39, 450, 487);
         contentPane.add(lblNewLabel_1);
     }
 }
@@ -107,4 +113,3 @@ class AboutMe extends JFrame {
         setVisible(true);
     }
 }
-
