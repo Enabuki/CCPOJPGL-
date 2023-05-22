@@ -50,6 +50,8 @@ public class GUIMain extends JFrame {
         btnAchievements.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 Achievements achievements = new Achievements();
+                achievements.setVisible(true);
+                dispose();
             }
         });
         btnAchievements.setBounds(150, 369, 119, 40);
@@ -106,68 +108,3 @@ class AboutMe extends JFrame {
     }
 }
 
-class Achievements extends JFrame {
-    private JPanel contentPane;
-
-    public Achievements() {
-        setTitle("ACHIEVEMENTS");
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        setBounds(100, 100, 450, 487);
-        contentPane = new JPanel();
-        contentPane.setBackground(new Color(222, 184, 135));
-        contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-
-        setContentPane(contentPane);
-        contentPane.setLayout(null);
-
-        JLabel lblNewLabel = new JLabel("Achievements");
-        lblNewLabel.setFont(new Font("Maiandra GD", Font.PLAIN, 15));
-        lblNewLabel.setBounds(167, 11, 109, 19);
-        contentPane.add(lblNewLabel);
-
-        JButton btnClose = new JButton("Close");
-        btnClose.setFont(new Font("Maiandra GD", Font.PLAIN, 11));
-        btnClose.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                Achievements.this.dispose();
-            }
-        });
-        btnClose.setBounds(175, 201, 89, 40);
-        contentPane.add(btnClose);
-
-        setVisible(true);
-    }
-}
-
-class Hobbies extends JFrame {
-    private JPanel contentPane;
-
-    public Hobbies() {
-        setTitle("HOBBIES");
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        setBounds(100, 100, 450, 487);
-        contentPane = new JPanel();
-        contentPane.setBackground(new Color(222, 184, 135));
-        contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-
-        setContentPane(contentPane);
-        contentPane.setLayout(null);
-
-        JLabel lblNewLabel = new JLabel("Hobbies");
-        lblNewLabel.setFont(new Font("Maiandra GD", Font.PLAIN, 15));
-        lblNewLabel.setBounds(190, 11, 69, 19);
-        contentPane.add(lblNewLabel);
-
-        JButton btnClose = new JButton("Close");
-        btnClose.setFont(new Font("Maiandra GD", Font.PLAIN, 11));
-        btnClose.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                Hobbies.this.dispose();
-            }
-        });
-        btnClose.setBounds(175, 201, 89, 40);
-        contentPane.add(btnClose);
-
-        setVisible(true);
-    }
-}
