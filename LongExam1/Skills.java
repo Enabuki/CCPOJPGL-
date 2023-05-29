@@ -10,6 +10,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
+import javax.swing.ImageIcon;
 
 public class Skills extends JFrame {
     private JPanel contentPane;
@@ -18,6 +19,17 @@ public class Skills extends JFrame {
     private JLabel lblAboutMe;
     private JLabel lblSkills;
     private JLabel lblContact;
+    private JLabel lblMySkills;
+    private JLabel lblNewLabel_1;
+    private JLabel lblPLangIMG;
+    private JLabel lblDesignIMG;
+    private JLabel lblSoftSkillsIMG;
+    private JLabel lblText1;
+    private JLabel lblText2;
+    private JLabel lblText3;
+    private JLabel lblText4;
+    private JLabel lblText5;
+    private JLabel lblText6;
 
     public Skills() {
         setTitle("PORTFOLIO");
@@ -120,6 +132,64 @@ public class Skills extends JFrame {
         lblContact.setFont(new Font("Maiandra GD", Font.PLAIN, 15));
         lblContact.setBounds(1350, 45, 107, 50);
         contentPane.add(lblContact);
+        
+        lblMySkills = new JLabel("My Skills");
+        lblMySkills.setFont(new Font("Maiandra GD", Font.PLAIN, 40));
+        lblMySkills.setForeground(new Color(220, 20, 60));
+        lblMySkills.setBounds(700, 173, 223, 101);
+        contentPane.add(lblMySkills);
+        
+        lblPLangIMG = new JLabel("");
+        lblPLangIMG.setIcon(new ImageIcon("C:\\Users\\Marc Cadiz\\Downloads\\ProgramingLanguage.png"));
+        lblPLangIMG.setBounds(170, 160, 400, 400);
+        contentPane.add(lblPLangIMG);
+        
+        lblDesignIMG = new JLabel("");
+        lblDesignIMG.setIcon(new ImageIcon("C:\\Users\\Marc Cadiz\\Downloads\\Design.png"));
+        lblDesignIMG.setBounds(170, 290, 400, 400);
+        contentPane.add(lblDesignIMG);
+        
+        lblSoftSkillsIMG = new JLabel("");
+        lblSoftSkillsIMG.setIcon(new ImageIcon("C:\\Users\\Marc Cadiz\\Downloads\\SoftSkills.png"));
+        lblSoftSkillsIMG.setBounds(170, 460, 400, 400);
+        contentPane.add(lblSoftSkillsIMG);
+        
+        lblText1 = new JLabel("Programming Languages\r\n");
+        lblText1.setFont(new Font("Maiandra GD", Font.PLAIN, 18));
+        lblText1.setForeground(new Color(255, 255, 255));
+        lblText1.setBounds(370, 310, 200, 30);
+        contentPane.add(lblText1);
+        
+        lblText2 = new JLabel("Has a basic knowledge of Java and HTML/CSS");
+        lblText2.setForeground(new Color(255, 255, 255));
+        lblText2.setBackground(new Color(255, 255, 255));
+        lblText2.setFont(new Font("Maiandra GD", Font.PLAIN, 18));
+        lblText2.setBounds(370, 350, 600, 30);
+        contentPane.add(lblText2);
+        
+        lblText3 = new JLabel("Design + Development");
+        lblText3.setFont(new Font("Maiandra GD", Font.PLAIN, 18));
+        lblText3.setForeground(new Color(255, 255, 255));
+        lblText3.setBounds(370, 450, 600, 30);
+        contentPane.add(lblText3);
+        
+        lblText4 = new JLabel("Knowledgable of responsive websites and designs by using Java and HTML");
+        lblText4.setForeground(new Color(255, 255, 255));
+        lblText4.setFont(new Font("Maiandra GD", Font.PLAIN, 18));
+        lblText4.setBounds(370, 490, 600, 30);
+        contentPane.add(lblText4);
+        
+        lblText5 = new JLabel("Soft Skills");
+        lblText5.setForeground(new Color(255, 255, 255));
+        lblText5.setFont(new Font("Maiandra GD", Font.PLAIN, 18));
+        lblText5.setBounds(370, 490, 200, 300);
+        contentPane.add(lblText5);
+        
+        lblText6 = new JLabel("I am driven by curiousity for learning. I also possess strong communication and problem solving skills.");
+        lblText6.setFont(new Font("Maiandra GD", Font.PLAIN, 18));
+        lblText6.setForeground(new Color(255, 255, 255));
+        lblText6.setBounds(370, 530, 1000, 300);
+        contentPane.add(lblText6);
         lblContact.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
