@@ -26,7 +26,7 @@ public class Home extends JFrame {
     private JLabel lblIgLogo;
     private JLabel lblGhubLogo;
     private JLabel lblAboutMe;
-    private JLabel lblAchievements;
+    private JLabel lblSkills;
     private JLabel lblContact;
 
     public static void main(String[] args) {
@@ -151,7 +151,7 @@ public class Home extends JFrame {
         JLabel lblHome = new JLabel("HOME");
         lblHome.setForeground(new Color(255, 255, 255));
         lblHome.setFont(new Font("Maiandra GD", Font.PLAIN, 15));
-        lblHome.setBounds(915, 45, 107, 50);
+        lblHome.setBounds(955, 45, 107, 50);
         contentPane.add(lblHome);
         lblHome.addMouseListener(new MouseAdapter() {
             @Override
@@ -174,7 +174,7 @@ public class Home extends JFrame {
         lblAboutMe = new JLabel("ABOUT ME");
         lblAboutMe.setForeground(new Color(255, 255, 255));
         lblAboutMe.setFont(new Font("Maiandra GD", Font.PLAIN, 15));
-        lblAboutMe.setBounds(1045, 45, 107, 50);
+        lblAboutMe.setBounds(1080, 45, 107, 50);
         contentPane.add(lblAboutMe);
         lblAboutMe.addMouseListener(new MouseAdapter() {
             @Override
@@ -195,27 +195,27 @@ public class Home extends JFrame {
             }
         });
 
-        lblAchievements = new JLabel("ACHIEVEMENTS");
-        lblAchievements.setFont(new Font("Maiandra GD", Font.PLAIN, 15));
-        lblAchievements.setForeground(new Color(255, 255, 255));
-        lblAchievements.setBounds(1180, 45, 120, 50);
-        contentPane.add(lblAchievements);
-        lblAchievements.addMouseListener(new MouseAdapter() {
+        lblSkills = new JLabel("SKILLS\r\n");
+        lblSkills.setFont(new Font("Maiandra GD", Font.PLAIN, 16));
+        lblSkills.setForeground(new Color(255, 255, 255));
+        lblSkills.setBounds(1230, 45, 120, 50);
+        contentPane.add(lblSkills);
+        lblSkills.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                Achievements achievements = new Achievements();
-                achievements.setVisible(true);
+                Skills skills = new Skills();
+                skills.setVisible(true);
                 dispose(); // Close the current Home frame
             }
 
             @Override
             public void mouseEntered(MouseEvent e) {
-                lblAchievements.setFont(new Font("Maiandra GD", Font.BOLD, 15));
+                lblSkills.setFont(new Font("Maiandra GD", Font.BOLD, 15));
             }
 
             @Override
             public void mouseExited(MouseEvent e) {
-                lblAchievements.setFont(new Font("Maiandra GD", Font.PLAIN, 15));
+                lblSkills.setFont(new Font("Maiandra GD", Font.PLAIN, 15));
             }
         });
 
