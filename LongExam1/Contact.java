@@ -10,6 +10,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
+import javax.swing.JTextField;
+import javax.swing.ImageIcon;
 
 public class Contact extends JFrame {
     private JPanel contentPane;
@@ -18,6 +20,23 @@ public class Contact extends JFrame {
     private JLabel lblAboutMe;
     private JLabel lblSkills;
     private JLabel lblContact;
+    private JLabel lblName;
+    private JTextField textField;
+    private JLabel lblEmail;
+    private JTextField textField1;
+    private JLabel lblMessage;
+    private JTextField textField2;
+    private JLabel lblEmailimg;
+    private JLabel lblPhoneimg;
+    private JLabel lblLinksimg;
+    private JLabel lblAddressimg;
+    private JLabel lblEmailText;
+    private JLabel lblNewLabel;
+    private JLabel lblNewLabel_1;
+    private JLabel lblLinksText;
+    private JLabel lblNewLabel_2;
+    private JLabel lblAddressText;
+    private JLabel lblNewLabel_3;
 
     public Contact() {
         setTitle("PORTFOLIO");
@@ -121,6 +140,118 @@ public class Contact extends JFrame {
         lblContact.setFont(new Font("Maiandra GD", Font.PLAIN, 15));
         lblContact.setBounds(1350, 45, 107, 50);
         contentPane.add(lblContact);
+        
+        JLabel lblGetInTouch = new JLabel("Get in Touch");
+        lblGetInTouch.setForeground(new Color(46, 139, 87));
+        lblGetInTouch.setFont(new Font("Maiandra GD", Font.PLAIN, 55));
+        lblGetInTouch.setBounds(166, 135, 384, 132);
+        contentPane.add(lblGetInTouch);
+        
+        lblName = new JLabel("Enter name: ");
+        lblName.setFont(new Font("Maiandra GD", Font.PLAIN, 22));
+        lblName.setForeground(Color.WHITE);
+        lblName.setBounds(166, 300, 159, 30);
+        contentPane.add(lblName);
+        
+        textField = new JTextField();
+        textField.setFont(new Font("Maiandra GD", Font.PLAIN, 17));
+        textField.setBounds(166, 335, 400, 35);
+        contentPane.add(textField);
+        textField.setColumns(10);
+        
+        lblEmail = new JLabel("Enter email address:");
+        lblEmail.setForeground(Color.WHITE);
+        lblEmail.setFont(new Font("Maiandra GD", Font.PLAIN, 22));
+        lblEmail.setBounds(166, 410, 200, 30);
+        contentPane.add(lblEmail);
+        
+        textField1 = new JTextField();
+        textField1.setFont(new Font("Maiandra GD", Font.PLAIN, 17));
+        textField1.setForeground(Color.WHITE);
+        textField1.setBounds(166, 445, 400, 35);
+        contentPane.add(textField1);
+        textField1.setColumns(10);
+        
+        lblMessage = new JLabel("Enter message:");
+        lblMessage.setForeground(Color.WHITE);
+        lblMessage.setFont(new Font("Maiandra GD", Font.PLAIN, 22));
+        lblMessage.setBounds(166, 520, 159, 30);
+        contentPane.add(lblMessage);
+        
+        textField2 = new JTextField();
+        textField2.setFont(new Font("Maiandra GD", Font.PLAIN, 17));
+        textField2.setForeground(Color.WHITE);
+        textField2.setBounds(166, 555, 400, 150);
+        contentPane.add(textField2);
+        textField2.setColumns(10);
+        
+        lblEmailimg = new JLabel("New label");
+        lblEmailimg.setIcon(new ImageIcon("C:\\Users\\Marc Cadiz\\Downloads\\email.png"));
+        lblEmailimg.setBounds(850, 320, 74, 75);
+        contentPane.add(lblEmailimg);
+        
+        lblPhoneimg = new JLabel("New label");
+        lblPhoneimg.setIcon(new ImageIcon("C:\\Users\\Marc Cadiz\\Downloads\\phone.png"));
+        lblPhoneimg.setBounds(850,410, 74, 75);
+        contentPane.add(lblPhoneimg);
+        
+        lblLinksimg = new JLabel("New label");
+        lblLinksimg.setIcon(new ImageIcon("C:\\Users\\Marc Cadiz\\Downloads\\links.png"));
+        lblLinksimg.setBounds(850,500, 74, 75);
+        contentPane.add(lblLinksimg);
+        
+        lblAddressimg = new JLabel("New label");
+        lblAddressimg.setIcon(new ImageIcon("C:\\Users\\Marc Cadiz\\Downloads\\address.png"));
+        lblAddressimg.setBounds(850,590, 74, 75);
+        contentPane.add(lblAddressimg);
+        
+        lblEmailText = new JLabel("Email\r\n");
+        lblEmailText.setForeground(Color.WHITE);
+        lblEmailText.setFont(new Font("Maiandra GD", Font.PLAIN, 15));
+        lblEmailText.setBounds(940, 335, 45, 13);
+        contentPane.add(lblEmailText);
+        
+        lblNewLabel = new JLabel("aseronandrei14@gmail.com");
+        lblNewLabel.setFont(new Font("Maiandra GD", Font.PLAIN, 15));
+        lblNewLabel.setForeground(Color.WHITE);
+        lblNewLabel.setBounds(940, 355, 200, 20);
+        contentPane.add(lblNewLabel);
+        
+        JLabel lblPhoneText = new JLabel("Phone");
+        lblPhoneText.setFont(new Font("Maiandra GD", Font.PLAIN, 15));
+        lblPhoneText.setForeground(Color.WHITE);
+        lblPhoneText.setBounds(940, 425, 45, 13);
+        contentPane.add(lblPhoneText);
+        
+        lblNewLabel_1 = new JLabel("+63 916 268 2657");
+        lblNewLabel_1.setFont(new Font("Maiandra GD", Font.PLAIN, 15));
+        lblNewLabel_1.setForeground(Color.WHITE);
+        lblNewLabel_1.setBounds(940, 445, 200, 13);
+        contentPane.add(lblNewLabel_1);
+        
+        lblLinksText = new JLabel("Social Media Links");
+        lblLinksText.setFont(new Font("Maiandra GD", Font.PLAIN, 15));
+        lblLinksText.setForeground(Color.WHITE);
+        lblLinksText.setBounds(940, 515, 200, 13);
+        contentPane.add(lblLinksText);
+        
+        lblNewLabel_2 = new JLabel("https://linktr.ee/andreiaseron");
+        lblNewLabel_2.setForeground(Color.WHITE);
+        lblNewLabel_2.setFont(new Font("Maiandra GD", Font.PLAIN, 15));
+        lblNewLabel_2.setBounds(940, 535, 200, 20);
+        contentPane.add(lblNewLabel_2);
+        
+        lblAddressText = new JLabel("Address");
+        lblAddressText.setFont(new Font("Maiandra GD", Font.PLAIN, 15));
+        lblAddressText.setForeground(Color.WHITE);
+        lblAddressText.setBounds(940, 605, 100, 13);
+        contentPane.add(lblAddressText);
+        
+        lblNewLabel_3 = new JLabel("Taguig City");
+        lblNewLabel_3.setFont(new Font("Maiandra GD", Font.PLAIN, 15));
+        lblNewLabel_3.setForeground(Color.WHITE);
+        lblNewLabel_3.setBounds(940, 625, 100, 20);
+        contentPane.add(lblNewLabel_3);
         lblContact.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
