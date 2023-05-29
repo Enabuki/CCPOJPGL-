@@ -11,15 +11,15 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
-public class Achievements extends JFrame {
+public class Skills extends JFrame {
     private JPanel contentPane;
     private JLabel lblPortfolio;
     private JLabel lblHome;
     private JLabel lblAboutMe;
-    private JLabel lblAchievements;
+    private JLabel lblSkills;
     private JLabel lblContact;
 
-    public Achievements() {
+    public Skills() {
         setTitle("PORTFOLIO");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -46,13 +46,15 @@ public class Achievements extends JFrame {
         lblHome = new JLabel("HOME");
         lblHome.setForeground(new Color(255, 255, 255));
         lblHome.setFont(new Font("Maiandra GD", Font.PLAIN, 15));
-        lblHome.setBounds(915, 45, 107, 50);
+        lblHome.setBounds(955, 45, 107, 50);
         contentPane.add(lblHome);
         lblHome.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                // Code to navigate to the Home page (Home.class)
-                System.out.println("Home clicked");
+                // Code to navigate to the Home page (Home.java)
+                dispose(); // Close the current frame
+                Home home = new Home(); // Create an instance of the Home class
+                home.setVisible(true); // Display the Home frame
             }
 
             @Override
@@ -69,13 +71,14 @@ public class Achievements extends JFrame {
         lblAboutMe = new JLabel("ABOUT ME");
         lblAboutMe.setForeground(new Color(255, 255, 255));
         lblAboutMe.setFont(new Font("Maiandra GD", Font.PLAIN, 15));
-        lblAboutMe.setBounds(1045, 45, 107, 50);
+        lblAboutMe.setBounds(1080, 45, 107, 50);
         contentPane.add(lblAboutMe);
         lblAboutMe.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                // Code to navigate to the About Me page (AboutMe.class)
-                System.out.println("About Me clicked");
+                AboutMe aboutme = new AboutMe();
+                aboutme.setVisible(true);
+                dispose(); // Close the current Home frame
             }
 
             @Override
@@ -89,26 +92,26 @@ public class Achievements extends JFrame {
             }
         });
 
-        lblAchievements = new JLabel("ACHIEVEMENTS");
-        lblAchievements.setFont(new Font("Maiandra GD", Font.PLAIN, 15));
-        lblAchievements.setForeground(new Color(255, 255, 255));
-        lblAchievements.setBounds(1180, 45, 120, 50);
-        contentPane.add(lblAchievements);
-        lblAchievements.addMouseListener(new MouseAdapter() {
-            @Override
+        lblSkills = new JLabel("SKILLS");
+        lblSkills.setFont(new Font("Maiandra GD", Font.PLAIN, 15));
+        lblSkills.setForeground(new Color(255, 255, 255));
+        lblSkills.setBounds(1230, 45, 120, 50);
+        contentPane.add(lblSkills);
+        lblSkills.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
-                // Code to navigate to the Achievements page (Achievements.class)
-                System.out.println("Achievements clicked");
+                Skills skills = new Skills();
+                skills.setVisible(true);
+                dispose(); // Close the current Home frame
             }
 
             @Override
             public void mouseEntered(MouseEvent e) {
-                lblAchievements.setFont(new Font("Maiandra GD", Font.BOLD, 15));
+                lblSkills.setFont(new Font("Maiandra GD", Font.BOLD, 15));
             }
 
             @Override
             public void mouseExited(MouseEvent e) {
-                lblAchievements.setFont(new Font("Maiandra GD", Font.PLAIN, 15));
+                lblSkills.setFont(new Font("Maiandra GD", Font.PLAIN, 15));
             }
         });
 
@@ -120,8 +123,10 @@ public class Achievements extends JFrame {
         lblContact.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                // Code to navigate to the Contact page (Contact.class)
-                System.out.println("Contact clicked");
+                // Code to navigate to the Home page (Home.java)
+                dispose(); // Close the current frame
+                Contact contact = new Contact(); // Create an instance of the Home class
+                contact.setVisible(true); // Display the Home frame
             }
 
             @Override
@@ -135,6 +140,4 @@ public class Achievements extends JFrame {
             }
         });
     }
-
 }
-
