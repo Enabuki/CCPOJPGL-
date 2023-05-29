@@ -139,7 +139,7 @@ public class AboutMe extends JFrame {
         contentPane.add(lblContact);
         
         lblPhoto1 = new JLabel("");
-        lblPhoto1.setIcon(new ImageIcon("D:\\Users\\63916\\Downloads\\fbpfp.png"));
+        lblPhoto1.setIcon(new ImageIcon("C:\\Users\\Marc Cadiz\\Downloads\\fbpfp.png"));
         lblPhoto1.setBounds(100, 120, 600, 630);
         contentPane.add(lblPhoto1);
         
