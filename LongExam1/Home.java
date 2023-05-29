@@ -110,10 +110,10 @@ public class Home extends JFrame {
         ImageIcon resizedIcon = new ImageIcon(resizedImage);
 
         // Set the resized image as the icon for the label
-        lblPicture1x1.setIcon(resizedIcon);
+        lblPicture1x1.setIcon(new ImageIcon("C:\\Users\\Marc Cadiz\\Downloads\\nobg1x1.jpg"));
 
         lblFbLogo = new JLabel("");
-        lblFbLogo.setIcon(new ImageIcon("D:\\Users\\63916\\Downloads\\fb.png"));
+        lblFbLogo.setIcon(new ImageIcon("C:\\Users\\Marc Cadiz\\Downloads\\fb.jpg"));
         lblFbLogo.setHorizontalAlignment(SwingConstants.CENTER);
         lblFbLogo.setForeground(Color.WHITE);
         lblFbLogo.setBounds(86, 105, 63, 1250);
@@ -127,7 +127,7 @@ public class Home extends JFrame {
 
         lblIgLogo = new JLabel("");
         lblIgLogo.setHorizontalAlignment(SwingConstants.CENTER);
-        lblIgLogo.setIcon(new ImageIcon("D:\\Users\\63916\\Downloads\\ig.png"));
+        lblIgLogo.setIcon(new ImageIcon("C:\\Users\\Marc Cadiz\\Downloads\\ig.jpg"));
         lblIgLogo.setBounds(130, 105, 119, 1250);
         contentPane.add(lblIgLogo);
         lblIgLogo.addMouseListener(new MouseAdapter() {
@@ -138,7 +138,7 @@ public class Home extends JFrame {
         });
 
         lblGhubLogo = new JLabel("");
-        lblGhubLogo.setIcon(new ImageIcon("D:\\Users\\63916\\Downloads\\ghub.png"));
+        lblGhubLogo.setIcon(new ImageIcon("C:\\Users\\Marc Cadiz\\Downloads\\ghub.png"));
         lblGhubLogo.setBounds(240, 106, 50, 1250);
         contentPane.add(lblGhubLogo);
         lblGhubLogo.addMouseListener(new MouseAdapter() {
