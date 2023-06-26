@@ -30,6 +30,7 @@ public class Skills extends JFrame {
     private JLabel lblText4;
     private JLabel lblText5;
     private JLabel lblText6;
+    private JLabel lblExit;
 
     public Skills() {
         setTitle("PORTFOLIO");
@@ -58,7 +59,7 @@ public class Skills extends JFrame {
         lblHome = new JLabel("HOME");
         lblHome.setForeground(new Color(255, 255, 255));
         lblHome.setFont(new Font("Maiandra GD", Font.PLAIN, 15));
-        lblHome.setBounds(955, 45, 107, 50);
+        lblHome.setBounds(835, 45, 107, 50);
         contentPane.add(lblHome);
         lblHome.addMouseListener(new MouseAdapter() {
             @Override
@@ -83,7 +84,7 @@ public class Skills extends JFrame {
         lblAboutMe = new JLabel("ABOUT ME");
         lblAboutMe.setForeground(new Color(255, 255, 255));
         lblAboutMe.setFont(new Font("Maiandra GD", Font.PLAIN, 15));
-        lblAboutMe.setBounds(1080, 45, 107, 50);
+        lblAboutMe.setBounds(955, 45, 107, 50);
         contentPane.add(lblAboutMe);
         lblAboutMe.addMouseListener(new MouseAdapter() {
             @Override
@@ -107,7 +108,7 @@ public class Skills extends JFrame {
         lblSkills = new JLabel("SKILLS");
         lblSkills.setFont(new Font("Maiandra GD", Font.PLAIN, 15));
         lblSkills.setForeground(new Color(255, 255, 255));
-        lblSkills.setBounds(1230, 45, 120, 50);
+        lblSkills.setBounds(1100, 45, 120, 50);
         contentPane.add(lblSkills);
         lblSkills.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
@@ -130,7 +131,7 @@ public class Skills extends JFrame {
         lblContact = new JLabel("CONTACT");
         lblContact.setForeground(new Color(255, 255, 255));
         lblContact.setFont(new Font("Maiandra GD", Font.PLAIN, 15));
-        lblContact.setBounds(1350, 45, 107, 50);
+        lblContact.setBounds(1200, 45, 107, 50);
         contentPane.add(lblContact);
         
         lblMySkills = new JLabel("My Skills");
@@ -190,6 +191,7 @@ public class Skills extends JFrame {
         lblText6.setForeground(new Color(255, 255, 255));
         lblText6.setBounds(370, 530, 1000, 300);
         contentPane.add(lblText6);
+        
         lblContact.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -209,5 +211,29 @@ public class Skills extends JFrame {
                 lblContact.setFont(new Font("Maiandra GD", Font.PLAIN, 15));
             }
         });
+        
+        lblExit = new JLabel("EXIT");
+        lblExit.setForeground(new Color(255, 255, 255));
+        lblExit.setFont(new Font("Maiandra GD", Font.PLAIN, 15));
+        lblExit.setBounds(1350, 45, 107, 50);
+        contentPane.add(lblExit);
+        lblExit.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                // Code to navigate to the Home page (Home.class)
+                System.out.println("Home clicked");
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                lblExit.setFont(new Font("Maiandra GD", Font.BOLD, 15));
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                lblExit.setFont(new Font("Maiandra GD", Font.PLAIN, 15));
+            }
+        });
+        
     }
 }
