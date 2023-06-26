@@ -1,0 +1,22 @@
+        lblExit = new JLabel("EXIT");
+        lblExit.setForeground(new Color(255, 255, 255));
+        lblExit.setFont(new Font("Maiandra GD", Font.PLAIN, 15));
+        lblExit.setBounds(1350, 45, 107, 50);
+        contentPane.add(lblExit);
+        lblExit.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                // Code to navigate to the Home page (Home.class)
+                System.out.println("Home clicked");
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                lblExit.setFont(new Font("Maiandra GD", Font.BOLD, 15));
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                lblExit.setFont(new Font("Maiandra GD", Font.PLAIN, 15));
+            }
+        });
