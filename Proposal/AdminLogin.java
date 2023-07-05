@@ -56,7 +56,7 @@ public class AdminLogin extends JFrame {
         UsernameInput = new JTextField();
         UsernameInput.setForeground(Color.WHITE);
         UsernameInput.setFont(new Font("Tw Cen MT", Font.PLAIN, 20));
-        UsernameInput.setBounds(752, 218, 431, 37);
+        UsernameInput.setBounds(752, 223, 431, 37);
         UsernameInput.setBackground(null);
         UsernameInput.setBorder(null);
         UsernameInput.setOpaque(false);
@@ -69,7 +69,7 @@ public class AdminLogin extends JFrame {
         PasswordInput.setBackground(null);
         PasswordInput.setBorder(null);
         PasswordInput.setOpaque(false);
-        PasswordInput.setBounds(752, 311, 431, 37);
+        PasswordInput.setBounds(752, 313, 431, 37);
         contentPane.add(PasswordInput);
         PasswordInput.setColumns(10);
 
@@ -131,7 +131,7 @@ public class AdminLogin extends JFrame {
 
         JLabel AdminPic = new JLabel("");
         AdminPic.setIcon(new ImageIcon("D:\\Users\\63916\\Downloads\\AdminLogin.png"));
-        AdminPic.setBounds(0, 0, 1280, 761);
+        AdminPic.setBounds(0, 0, 1280, 770);
         contentPane.add(AdminPic);
     }
 }
