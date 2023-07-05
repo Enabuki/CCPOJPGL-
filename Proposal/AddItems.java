@@ -30,7 +30,6 @@ public class AddItems extends JFrame {
     private JLabel lblLogoutTab;
     private JLabel lblInsertImage;
     private JLabel lblSave;
-    private JFrame previousWindow;
     private JLabel lblBg;
 
     public static void main(String[] args) {
@@ -196,6 +195,7 @@ public class AddItems extends JFrame {
                         panel.setLayout(null);
                         panel.setPreferredSize(new Dimension(600, 200));
 
+                      
                         JLabel imageLabel = new JLabel();
                         imageLabel.setBounds(10, 10, lblDisplayImage.getWidth(), lblDisplayImage.getHeight());
                         imageLabel.setIcon(lblDisplayImage.getIcon());
@@ -245,3 +245,4 @@ public class AddItems extends JFrame {
         contentPane.add(lblBg);
     }
 }
+
