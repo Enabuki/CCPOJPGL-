@@ -54,9 +54,6 @@ public class AddItems extends JFrame {
         setContentPane(contentPane);
         contentPane.setLayout(null);
 
-
-        
-
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         int screenWidth = screenSize.width;
         int screenHeight = screenSize.height;
@@ -146,6 +143,12 @@ public class AddItems extends JFrame {
                     AdminLogin adminLogin = new AdminLogin();
                     adminLogin.setVisible(true);
                     dispose();
+                    // Clear the displayed image and text fields
+                    lblDisplayImage.setIcon(null);
+                    textField_ItemName.setText("");
+                    textField_ItemStatus.setText("");
+                    textField_ItemDate.setText("");
+                    textField_ItemDescription.setText("");
                 } else {
                     // Do nothing and stay in the program
                 }
@@ -175,9 +178,67 @@ public class AddItems extends JFrame {
         });
 
         lblSave = new JLabel("");
-        lblSave.setBounds(993, 623, 198, 46);
+        lblSave.setBounds(993, 623, 207, 46);
         contentPane.add(lblSave);
-        
+        lblSave.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                String itemName = textField_ItemName.getText();
+                String itemStatus = textField_ItemStatus.getText();
+                String itemDate = textField_ItemDate.getText();
+                String itemDescription = textField_ItemDescription.getText();
+
+                if (!itemName.isEmpty() && !itemStatus.isEmpty() && !itemDate.isEmpty() && !itemDescription.isEmpty() && lblDisplayImage.getIcon() != null) {
+                    int choice = JOptionPane.showConfirmDialog(null, "Do you want to save this information?", "Save",
+                            JOptionPane.YES_NO_OPTION);
+                    if (choice == JOptionPane.YES_OPTION) {
+                        // Create a panel to display the information and image
+                        JPanel panel = new JPanel();
+                        panel.setLayout(null);
+                        panel.setPreferredSize(new Dimension(600, 200));
+
+                        JLabel imageLabel = new JLabel();
+                        imageLabel.setBounds(10, 10, lblDisplayImage.getWidth(), lblDisplayImage.getHeight());
+                        imageLabel.setIcon(lblDisplayImage.getIcon());
+                        panel.add(imageLabel);
+
+                        JLabel nameLabel = new JLabel("Item Name: " + itemName);
+                        nameLabel.setBounds(150, 10, 300, 20);
+                        panel.add(nameLabel);
+
+                        JLabel statusLabel = new JLabel("Item Status: " + itemStatus);
+                        statusLabel.setBounds(150, 40, 300, 20);
+                        panel.add(statusLabel);
+
+                        JLabel dateLabel = new JLabel("Item Date: " + itemDate);
+                        dateLabel.setBounds(150, 70, 300, 20);
+                        panel.add(dateLabel);
+
+                        JLabel descriptionLabel = new JLabel("Item Description: " + itemDescription);
+                        descriptionLabel.setBounds(150, 100, 300, 20);
+                        panel.add(descriptionLabel);
+
+                        // Add the panel to your desired layout
+                        // For example, if you have a container called 'container', you can add the panel as follows:
+                        // container.add(panel);
+
+                        JOptionPane.showMessageDialog(null, "SUCCESSFULLY ADDED", "Success",
+                                JOptionPane.INFORMATION_MESSAGE);
+                        
+                        // Clear the displayed image and text fields
+                        lblDisplayImage.setIcon(null);
+                        textField_ItemName.setText("");
+                        textField_ItemStatus.setText("");
+                        textField_ItemDate.setText("");
+                        textField_ItemDescription.setText("");
+                        
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Please enter all information!", "Error",
+                            JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        });
+
         lblBg = new JLabel("");
         lblBg.setIcon(new ImageIcon("D:\\Users\\63916\\Downloads\\AddItemsGUI.png"));
         lblBg.setBounds(0, 0, 1280, 790);
