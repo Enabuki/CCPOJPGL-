@@ -132,10 +132,13 @@ public class LossAndDamageList extends JFrame {
         Logoutbtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Code to navigate to the LoginGUI class
-                AdminLogin adminLogin = new AdminLogin();
-                adminLogin.setVisible(true);
-                dispose(); // Close the current window
+                int option = JOptionPane.showConfirmDialog(LossAndDamageList.this, "Do you want to logout?", "Logout Confirmation", JOptionPane.YES_NO_OPTION);
+                if (option == JOptionPane.YES_OPTION) {
+                    // Code to navigate to the AdminLogin class
+                    AdminLogin adminLogin = new AdminLogin();
+                    adminLogin.setVisible(true);
+                    dispose(); // Close the current window
+                }
             }
         });
 
