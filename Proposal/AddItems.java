@@ -1,7 +1,5 @@
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.EventQueue;
-import java.awt.Font;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.io.File;
@@ -9,13 +7,13 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
 
 public class AddItems extends JFrame {
     private JPanel contentPane;
@@ -24,19 +22,15 @@ public class AddItems extends JFrame {
     private JTextField textField_ItemStatus;
     private JTextField textField_ItemDate;
     private JTextField textField_ItemDescription;
-    private JButton btnNewButton;
     private JLabel lblDisplayImage;
     private JLabel lblBgImg;
     private JLabel lblMAGLogo;
     private JLabel lblHomeTab;
-    private JLabel lblItemsTab;
+    private JLabel lblToolsTab;
     private JLabel lblReportsTab;
-    private JLabel lblSettingsTab;
     private JLabel lblLogoutTab;
     private JLabel lblInsertImage;
     private JLabel lblSave;
-    private JLabel lblProfilebtn;
-    private JLabel lblBackbtn;
     private JFrame previousWindow;
 
     /**
@@ -71,7 +65,7 @@ public class AddItems extends JFrame {
 
         // Load and scale the background image
         try {
-            Image bgImage = ImageIO.read(new File("D:\\Users\\63916\\Downloads\\Rental System.png"));
+            Image bgImage = ImageIO.read(new File("D:\\Users\\63916\\Downloads\\AddItemsGUI.png"));
             Image scaledBgImage = bgImage.getScaledInstance(lblBgImg.getWidth(), lblBgImg.getHeight(),
                     Image.SCALE_SMOOTH);
             lblBgImg.setIcon(new ImageIcon(scaledBgImage));
@@ -95,32 +89,32 @@ public class AddItems extends JFrame {
         contentPane.add(hiddenTextField);
 
         lblDisplayImage = new JLabel("");
-        lblDisplayImage.setBounds(275, 215, 306, 391);
+        lblDisplayImage.setBounds(277, 181, 306, 399);
         contentPane.add(lblDisplayImage);
 
         textField_ItemName = new JTextField();
-        textField_ItemName.setBounds(640, 277, 263, 46);
+        textField_ItemName.setBounds(640, 239, 263, 46);
+        textField_ItemName.setBorder(null); // Remove the border
         contentPane.add(textField_ItemName);
         textField_ItemName.setColumns(10);
 
         textField_ItemStatus = new JTextField();
         textField_ItemStatus.setColumns(10);
-        textField_ItemStatus.setBounds(640, 394, 263, 46);
+        textField_ItemStatus.setBounds(642, 358, 263, 46);
+        textField_ItemStatus.setBorder(null); // Remove the border
         contentPane.add(textField_ItemStatus);
 
         textField_ItemDate = new JTextField();
         textField_ItemDate.setColumns(10);
-        textField_ItemDate.setBounds(640, 521, 263, 46);
+        textField_ItemDate.setBounds(642, 480, 263, 46);
+        textField_ItemDate.setBorder(null); // Remove the border
         contentPane.add(textField_ItemDate);
 
         textField_ItemDescription = new JTextField();
         textField_ItemDescription.setColumns(10);
-        textField_ItemDescription.setBounds(931, 277, 263, 46);
+        textField_ItemDescription.setBounds(937, 239, 263, 46);
+        textField_ItemDescription.setBorder(null); // Remove the border
         contentPane.add(textField_ItemDescription);
-
-        btnNewButton = new JButton("");
-        btnNewButton.setBounds(275, 43, 55, 46);
-        contentPane.add(btnNewButton);
 
         lblMAGLogo = new JLabel("");
         lblMAGLogo.setBounds(25, 37, 148, 64);
@@ -146,10 +140,10 @@ public class AddItems extends JFrame {
             }
         });
 
-        lblItemsTab = new JLabel("");
-        lblItemsTab.setBounds(25, 256, 119, 41);
-        contentPane.add(lblItemsTab);
-        lblItemsTab.addMouseListener(new java.awt.event.MouseAdapter() {
+        lblToolsTab = new JLabel("");
+        lblToolsTab.setBounds(25, 256, 119, 41);
+        contentPane.add(lblToolsTab);
+        lblToolsTab.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 // Navigate to Items.java when lblItemsTab is clicked
                 Items itemsPage = new Items();
@@ -162,16 +156,12 @@ public class AddItems extends JFrame {
         lblReportsTab.setBounds(23, 310, 139, 46);
         contentPane.add(lblReportsTab);
 
-        lblSettingsTab = new JLabel("");
-        lblSettingsTab.setBounds(25, 381, 137, 41);
-        contentPane.add(lblSettingsTab);
-
         lblLogoutTab = new JLabel("");
         lblLogoutTab.setBounds(23, 432, 127, 51);
         contentPane.add(lblLogoutTab);
 
         lblInsertImage = new JLabel("");
-        lblInsertImage.setBounds(328, 647, 197, 51);
+        lblInsertImage.setBounds(332, 623, 198, 51);
         contentPane.add(lblInsertImage);
         lblInsertImage.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -186,6 +176,7 @@ public class AddItems extends JFrame {
                         Image scaledImg = img.getScaledInstance(lblDisplayImage.getWidth(),
                                 lblDisplayImage.getHeight(), Image.SCALE_SMOOTH);
                         lblDisplayImage.setIcon(new ImageIcon(scaledImg));
+                        lblDisplayImage.setBounds(277, 181, 306, 399); // Set the specified dimensions
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
@@ -194,32 +185,7 @@ public class AddItems extends JFrame {
         });
 
         lblSave = new JLabel("");
-        lblSave.setBounds(996, 647, 198, 46);
+        lblSave.setBounds(996, 628, 198, 46);
         contentPane.add(lblSave);
-
-        lblProfilebtn = new JLabel("");
-        lblProfilebtn.setBounds(1185, 43, 55, 58);
-        contentPane.add(lblProfilebtn);
-        lblProfilebtn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                // Navigate to StudentProfile.java when lblProfilebtn is clicked
-                StudentProfile studentProfile = new StudentProfile();
-                studentProfile.setVisible(true);
-                dispose();
-            }
-        });
-
-        lblBackbtn = new JLabel("");
-        lblBackbtn.setBounds(275, 43, 55, 51);
-        contentPane.add(lblBackbtn);
-        lblBackbtn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                // Go back to the previous window
-                if (previousWindow != null) {
-                    previousWindow.setVisible(true);
-                    dispose();
-                }
-            }
-        });
     }
 }
