@@ -1,40 +1,45 @@
+import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.io.File;
 import java.io.IOException;
-
 import javax.imageio.ImageIO;
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
-import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+import java.awt.GridLayout;
+import java.util.ArrayList;
+import javax.swing.JScrollPane;
+import javax.swing.JList;
 
 public class ToolsGUI extends JFrame {
     private JPanel contentPane;
-    private JLabel lblBgImg;
     private JLabel lblMAGLogo;
     private JLabel lblHomeTab;
     private JLabel lblToolsTab;
     private JLabel lblReportsTab;
     private JLabel lblLogoutTab;
-    private JFrame previousWindow;
     private JLabel lblAddItembtn;
     private JLabel lblRemoveItem;
     private JLabel lblItemTracker;
-    private JLabel lblBg;
     private JLabel lblBackground;
+    private JPanel itemsPanel;
+    private ArrayList<Item> itemList;
+    private JScrollPane ItemsscrollPane;
+    private JList Itemslist;
 
     public static void main(String[] args) {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                	ToolsGUI frame = new ToolsGUI();
+                    ToolsGUI frame = new ToolsGUI();
                     frame.setVisible(true);
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -50,8 +55,25 @@ public class ToolsGUI extends JFrame {
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         setContentPane(contentPane);
         contentPane.setLayout(null);
-        
 
+        JPanel mainPanel = new JPanel();
+        mainPanel.setBounds(0, 0, 1280, 800);
+        contentPane.add(mainPanel);
+        mainPanel.setLayout(null);
+
+        JPanel ItemsPanel = new JPanel();
+        ItemsPanel.setForeground(Color.WHITE);
+        ItemsPanel.setBorder(BorderFactory.createTitledBorder("Item List"));
+        ItemsPanel.setBackground(Color.LIGHT_GRAY);
+        ItemsPanel.setBounds(270, 140, 925, 582);
+        mainPanel.add(ItemsPanel);
+        ItemsPanel.setLayout(new GridLayout(0, 1));
+        
+        ItemsscrollPane = new JScrollPane();
+        ItemsPanel.add(ItemsscrollPane);
+        
+        Itemslist = new JList();
+        ItemsscrollPane.setColumnHeaderView(Itemslist);
 
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         int screenWidth = screenSize.width;
@@ -59,10 +81,12 @@ public class ToolsGUI extends JFrame {
         int frameWidth = 1280;
         int frameHeight = 800;
         setBounds((screenWidth - frameWidth) / 2, (screenHeight - frameHeight) / 2, frameWidth, frameHeight);
+        
+        
 
         lblMAGLogo = new JLabel("");
         lblMAGLogo.setBounds(25, 37, 148, 64);
-        contentPane.add(lblMAGLogo);
+        mainPanel.add(lblMAGLogo);
         lblMAGLogo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 HomePage homePage = new HomePage();
@@ -73,7 +97,7 @@ public class ToolsGUI extends JFrame {
 
         lblHomeTab = new JLabel("");
         lblHomeTab.setBounds(25, 194, 112, 41);
-        contentPane.add(lblHomeTab);
+        mainPanel.add(lblHomeTab);
         lblHomeTab.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 HomePage homePage = new HomePage();
@@ -84,7 +108,7 @@ public class ToolsGUI extends JFrame {
 
         lblToolsTab = new JLabel("");
         lblToolsTab.setBounds(25, 256, 119, 41);
-        contentPane.add(lblToolsTab);
+        mainPanel.add(lblToolsTab);
         lblToolsTab.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 ToolsGUI toolsPage = new ToolsGUI();
@@ -95,7 +119,7 @@ public class ToolsGUI extends JFrame {
 
         lblReportsTab = new JLabel("");
         lblReportsTab.setBounds(23, 310, 139, 46);
-        contentPane.add(lblReportsTab);
+        mainPanel.add(lblReportsTab);
         lblReportsTab.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 LossAndDamageList lossAndDamageList = new LossAndDamageList();
@@ -106,11 +130,11 @@ public class ToolsGUI extends JFrame {
 
         lblLogoutTab = new JLabel("");
         lblLogoutTab.setBounds(25, 371, 127, 46);
-        contentPane.add(lblLogoutTab);
-        
+        mainPanel.add(lblLogoutTab);
+
         lblAddItembtn = new JLabel("");
         lblAddItembtn.setBounds(1003, 37, 67, 72);
-        contentPane.add(lblAddItembtn);
+        mainPanel.add(lblAddItembtn);
         lblAddItembtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 AddItems addItems = new AddItems();
@@ -118,21 +142,20 @@ public class ToolsGUI extends JFrame {
                 dispose();
             }
         });
-        
+
         lblRemoveItem = new JLabel("");
         lblRemoveItem.setBounds(1083, 37, 67, 72);
-        contentPane.add(lblRemoveItem);
-        
+        mainPanel.add(lblRemoveItem);
+
         lblItemTracker = new JLabel("");
         lblItemTracker.setBounds(1165, 37, 55, 64);
-        contentPane.add(lblItemTracker);
-        
+        mainPanel.add(lblItemTracker);
+
         lblBackground = new JLabel("");
         lblBackground.setIcon(new ImageIcon("D:\\Users\\63916\\Downloads\\ToolsGUI.png"));
-        lblBackground.setBounds(0, 0, 1280, 790);
-        contentPane.add(lblBackground);
+        lblBackground.setBounds(0, 0, 1280, 800);
+        mainPanel.add(lblBackground);
 
-    
         lblLogoutTab.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 int choice = JOptionPane.showConfirmDialog(null, "Do you want to logout?", "Logout", JOptionPane.YES_NO_OPTION);
@@ -145,5 +168,7 @@ public class ToolsGUI extends JFrame {
                 }
             }
         });
+
+
     }
 }
