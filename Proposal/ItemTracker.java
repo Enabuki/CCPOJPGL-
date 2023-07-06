@@ -205,6 +205,10 @@ public class ItemTracker extends JFrame {
                         "Slip Joint Pliers", "Linesman Pliers", "Long Nose Pliers", "Locking Pliers",
                         "Wire Strippers", "Cutting Pliers"
                 });
+                
+                JComboBox<Integer> quantityComboBox = new JComboBox<>(new Integer[]{
+                        1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+                });
 
                 // Combobox for Month
                 JComboBox<String> monthComboBox = new JComboBox<>(new String[]{
@@ -250,6 +254,8 @@ public class ItemTracker extends JFrame {
                 JPanel panel = new JPanel(new GridLayout(8, 6));
                 panel.add(new JLabel("Item:"));
                 panel.add(equipmentComboBox);
+                panel.add(new JLabel("Quantity:"));
+                panel.add(quantityComboBox);
                 panel.add(new JLabel("Day:"));
                 panel.add(dayComboBox);
                 panel.add(new JLabel("Month:"));
@@ -266,21 +272,22 @@ public class ItemTracker extends JFrame {
                 int option = JOptionPane.showConfirmDialog(
                         ItemTracker.this,
                         panel,
-                        "Add Loss Report",
+                        "Add Item Report",
                         JOptionPane.OK_CANCEL_OPTION
                 );
 
                 if (option == JOptionPane.OK_OPTION) {
                     int confirmation = JOptionPane.showConfirmDialog(ItemTracker.this, "Are you sure you want to update the list?", "Confirmation", JOptionPane.YES_NO_OPTION);
                     if (confirmation == JOptionPane.YES_OPTION) {
-                        String equipment = (String) equipmentComboBox.getSelectedItem();
-                        String day = (String) dayComboBox.getSelectedItem();
+                    	String equipment = (String) equipmentComboBox.getSelectedItem();
+                        int quantity = (int) quantityComboBox.getSelectedItem();
                         String month = (String) monthComboBox.getSelectedItem();
+                        String day = (String) dayComboBox.getSelectedItem();
                         String year = (String) yearComboBox.getSelectedItem();
                         String hour = (String) hourComboBox.getSelectedItem();
                         String minute = (String) minuteComboBox.getSelectedItem();
                         String time = (String) timeComboBox.getSelectedItem();
-                        String report = "Equipment: " + equipment + " - Date Last Used: " + month + "/" + day + "/" + year + " - Time: " + hour + ":"+minute +time;
+                        String report = "Equipment: " + quantity+  equipment+ " - Date Last Used: " + month + "/" + day + "/" + year + " - Time: " + hour + ":"+minute +time;
                         itemListModel.addElement(report);
                         saveReportsToFile();
                     }
