@@ -1,4 +1,7 @@
+import java.awt.Dimension;
 import java.awt.EventQueue;
+import java.awt.Toolkit;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
@@ -44,19 +47,30 @@ public class AdminLogin extends JFrame {
      */
     public AdminLogin() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(1280, 800);
-        setLocationRelativeTo(null); // Set frame to center of screen
-        setResizable(false); // Disable frame resizing
+
+        // Get the screen dimensions
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+
+        // Calculate the center position
+        int centerX = (screenSize.width - 1280) / 2;
+        int centerY = (screenSize.height - 780) / 2;
+
+        // Set the frame's position and size
+        setBounds(centerX, centerY, 1280, 780);
+
+        // Make the frame not resizable
+        setResizable(false);
 
         contentPane = new JPanel();
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+
         setContentPane(contentPane);
         contentPane.setLayout(null);
 
         UsernameInput = new JTextField();
         UsernameInput.setForeground(Color.WHITE);
         UsernameInput.setFont(new Font("Tw Cen MT", Font.PLAIN, 20));
-        UsernameInput.setBounds(752, 223, 431, 37);
+        UsernameInput.setBounds(752, 223, 431, 31);
         UsernameInput.setBackground(null);
         UsernameInput.setBorder(null);
         UsernameInput.setOpaque(false);
@@ -69,15 +83,10 @@ public class AdminLogin extends JFrame {
         PasswordInput.setBackground(null);
         PasswordInput.setBorder(null);
         PasswordInput.setOpaque(false);
-        PasswordInput.setBounds(752, 313, 431, 37);
+        PasswordInput.setBounds(752, 314, 431, 37);
         contentPane.add(PasswordInput);
         PasswordInput.setColumns(10);
 
-        JLabel adminLoginPic = new JLabel("");
-        adminLoginPic.setFont(new Font("Times New Roman", Font.PLAIN, 18));
-        adminLoginPic.setIcon(new ImageIcon("C:\\UsersNITRO 5\\OneDrive\\Desktop\\Rental\\1in.png"));
-        adminLoginPic.setBounds(0, 0, 1000, 600);
-        contentPane.add(adminLoginPic);
 
         adminLoginBtn = new JButton("");
 
@@ -97,9 +106,9 @@ public class AdminLogin extends JFrame {
 
                     if (UserInput.equals("Admin") && PassInput.equals("Admin123")) {
                         JOptionPane.showMessageDialog(null, "Login successful!");
-                        AdminLogin AdmPg = new AdminLogin();
+                        HomePage AdmPg = new HomePage();
                         AdmPg.setVisible(true);
-                        new AdminLogin();
+                        new HomePage();
                         dispose();
                         userExists = true;
                         break;
