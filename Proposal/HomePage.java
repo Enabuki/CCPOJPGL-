@@ -25,15 +25,17 @@ public class HomePage extends JFrame {
 		});
 	}
 
-	/**
+	/**	
 	 * Create the frame.
 	 */
 	public HomePage() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1296, 799);
+		setBounds(100, 100, 1280, 780);
+		setResizable(false); // Set frame not resizable
+		setLocationRelativeTo(null); // Set frame to launch at the center of the screen
+
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
@@ -107,17 +109,25 @@ public class HomePage extends JFrame {
 		Logoutbtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Code to navigate to the LoginGUI class
-                AdminLogin loginGUI = new AdminLogin();
-                loginGUI.setVisible(true);
-                dispose(); // Close the current window
+                int option = JOptionPane.showConfirmDialog(HomePage.this, "Do you want to logout?", "Logout Confirmation", JOptionPane.YES_NO_OPTION);
+                if (option == JOptionPane.YES_OPTION) {
+                    // Code to navigate to the AdminLogin class
+                    AdminLogin adminLogin = new AdminLogin();
+                    adminLogin.setVisible(true);
+                    dispose(); // Close the current window
+                }
             }
         });
 		
 		JLabel Imagelbl = new JLabel("");
-		Imagelbl.setIcon(new ImageIcon("C:\\Users\\NITRO 5\\OneDrive\\Desktop\\Rental\\Home.png"));
+		Imagelbl.setIcon(new ImageIcon("D:\\Users\\63916\\Downloads\\HomePage.png"));
 		Imagelbl.setBounds(0, 0, 1280, 761);
 		contentPane.add(Imagelbl);
+		
+		JLabel lblMAGLogo = new JLabel("");
+		lblMAGLogo.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblMAGLogo.setBounds(25, 22, 147, 54);
+		contentPane.add(lblMAGLogo);
 	}
 
 }
