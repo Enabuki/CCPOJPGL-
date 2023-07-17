@@ -191,14 +191,15 @@ public class AddItems extends JFrame {
                 String itemName = textField_ItemName.getText();
                 String itemImage = getInsertedImagePath();
                 String itemStatus = (String) comboBox_ItemStatus.getSelectedItem();
+                String itemDate = lblDate.getText(); // Get the date from lblDate
                 String itemDescription = textField_ItemDescription.getText();
+                
                 
                 if (!itemName.isEmpty() && !itemDescription.isEmpty() && lblDisplayImage.getIcon() != null) {
                     int choice = JOptionPane.showConfirmDialog(null, "Do you want to save this information?", "Save",
                         JOptionPane.YES_NO_OPTION);
                     if (choice == JOptionPane.YES_OPTION) {
-                        String itemDate = lblDate.getText();
-                        saveItem(itemName, itemImage, itemStatus, itemDate, itemDescription);
+                        saveItem(itemName, itemImage, itemStatus, itemDate, itemDescription); // Save the date as well
                         JOptionPane.showMessageDialog(null, "Information Saved!", "Saved",
                             JOptionPane.INFORMATION_MESSAGE);
                         lblDisplayImage.setIcon(null);
@@ -303,3 +304,4 @@ public class AddItems extends JFrame {
         return insertedImage;
     }
 }
+
