@@ -14,6 +14,7 @@ public class LossAndDamageList extends JFrame {
     private DefaultListModel<String> damageListModel;
     private DefaultListModel<String> lossListModel;
     private String filePath = "C:\\Users\\Jeck\\eclipse-workspace\\OOP-project\\src\\LossAndDamageList.txt";
+    private JTextField nametextField; // Declare nametextField as an instance variable
 
 
 
@@ -21,6 +22,7 @@ public class LossAndDamageList extends JFrame {
         setBounds(new Rectangle(0, 0, 1280, 761));
         setTitle("Damage & Loss Reports");
         setSize(1280, 761);
+        setResizable(false);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
@@ -77,6 +79,10 @@ public class LossAndDamageList extends JFrame {
         mainPanel.add(deleteDamageButton);
         mainPanel.add(addLossButton);
         mainPanel.add(addDamageButton);
+        
+        nametextField = new JTextField();
+        nametextField.setBounds(0, 0, 0, 0);
+        mainPanel.add(nametextField);
 
         getContentPane().add(mainPanel);
         
@@ -212,7 +218,7 @@ public class LossAndDamageList extends JFrame {
                         "2023", "2024", "2025", "2026"
                 });
 
-                JPanel panel = new JPanel(new GridLayout(4, 2));
+                JPanel panel = new JPanel(new GridLayout(5, 2));
                 panel.add(new JLabel("Equipment Name:"));
                 panel.add(equipmentComboBox);
                 panel.add(new JLabel("Month:"));
@@ -221,9 +227,11 @@ public class LossAndDamageList extends JFrame {
                 panel.add(dayComboBox);
                 panel.add(new JLabel("Year:"));
                 panel.add(yearComboBox);
+                panel.add(new JLabel("Name:"));
+                panel.add(nametextField);
 
                 int option = JOptionPane.showConfirmDialog(
-                		LossAndDamageList.this,
+                        LossAndDamageList.this,
                         panel,
                         "Add Loss Report",
                         JOptionPane.OK_CANCEL_OPTION
@@ -236,7 +244,8 @@ public class LossAndDamageList extends JFrame {
                         String day = (String) dayComboBox.getSelectedItem();
                         String month = (String) monthComboBox.getSelectedItem();
                         String year = (String) yearComboBox.getSelectedItem();
-                        String report = "Equipment: " + equipment + " - Date Last Used: " + month + "/" + day + "/" + year;
+                        String name = nametextField.getText();
+                        String report = "Equipment: " + equipment + " - Date Last Used: " + month + "/ " + day + "/ " + year + " - Name: " + name;
                         lossListModel.addElement(report);
                         saveReportsToFile();
                     }
