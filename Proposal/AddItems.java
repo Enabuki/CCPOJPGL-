@@ -1,25 +1,35 @@
 import java.awt.Dimension;
 import java.awt.EventQueue;
+import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.imageio.ImageIO;
+import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+import javax.swing.JTextPane;
 
 public class AddItems extends JFrame {
     private JPanel contentPane;
     private JTextField textField_ItemName;
-    private JTextField textField_ItemStatus;
-    private JTextField textField_ItemDate;
     private JTextField textField_ItemDescription;
     private JLabel lblDisplayImage;
     private JLabel lblBgImg;
@@ -29,14 +39,21 @@ public class AddItems extends JFrame {
     private JLabel lblReportsTab;
     private JLabel lblLogoutTab;
     private JLabel lblInsertImage;
+    private JLabel lblClear;
     private JLabel lblSave;
-    private JLabel lblBg;
+    private String insertedImage;
+    private JComboBox<String> comboBox_ItemStatus;
+    private JComboBox<String> comboBox_Month;
+    private JComboBox<String> comboBox_Day;
+    private JComboBox<String> comboBox_Year;
+    private JLabel lblDate;
 
     public static void main(String[] args) {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
                     AddItems frame = new AddItems();
+                    frame.setLocationRelativeTo(null);
                     frame.setVisible(true);
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -64,25 +81,13 @@ public class AddItems extends JFrame {
         lblDisplayImage.setBounds(277, 181, 306, 399);
         contentPane.add(lblDisplayImage);
 
-        textField_ItemName = new JTextField();
+        textField_ItemName = new JTextField("");
         textField_ItemName.setBounds(640, 239, 263, 46);
         textField_ItemName.setBorder(null);
         contentPane.add(textField_ItemName);
         textField_ItemName.setColumns(10);
 
-        textField_ItemStatus = new JTextField();
-        textField_ItemStatus.setColumns(10);
-        textField_ItemStatus.setBounds(642, 358, 263, 46);
-        textField_ItemStatus.setBorder(null);
-        contentPane.add(textField_ItemStatus);
-
-        textField_ItemDate = new JTextField();
-        textField_ItemDate.setColumns(10);
-        textField_ItemDate.setBounds(642, 480, 263, 46);
-        textField_ItemDate.setBorder(null);
-        contentPane.add(textField_ItemDate);
-
-        textField_ItemDescription = new JTextField();
+        textField_ItemDescription = new JTextField("");
         textField_ItemDescription.setColumns(10);
         textField_ItemDescription.setBounds(937, 239, 263, 46);
         textField_ItemDescription.setBorder(null);
@@ -145,9 +150,10 @@ public class AddItems extends JFrame {
                     // Clear the displayed image and text fields
                     lblDisplayImage.setIcon(null);
                     textField_ItemName.setText("");
-                    textField_ItemStatus.setText("");
-                    textField_ItemDate.setText("");
+                    comboBox_ItemStatus.setSelectedIndex(0);
                     textField_ItemDescription.setText("");
+                    comboBox_ItemStatus.setSelectedIndex(0);
+                    lblDate.setText("");
                 } else {
                     // Do nothing and stay in the program
                 }
@@ -163,10 +169,11 @@ public class AddItems extends JFrame {
                 int result = fileChooser.showOpenDialog(null);
                 if (result == JFileChooser.APPROVE_OPTION) {
                     File selectedFile = fileChooser.getSelectedFile();
+                    insertedImage = fileChooser.getSelectedFile().getAbsolutePath();
                     try {
                         Image img = ImageIO.read(selectedFile);
                         Image scaledImg = img.getScaledInstance(lblDisplayImage.getWidth(),
-                                lblDisplayImage.getHeight(), Image.SCALE_SMOOTH);
+                        lblDisplayImage.getHeight(), Image.SCALE_SMOOTH);
                         lblDisplayImage.setIcon(new ImageIcon(scaledImg));
                         lblDisplayImage.setBounds(275, 180, 300, 399);
                     } catch (IOException e) {
@@ -177,60 +184,29 @@ public class AddItems extends JFrame {
         });
 
         lblSave = new JLabel("");
-        lblSave.setBounds(993, 623, 207, 46);
+        lblSave.setBounds(784, 623, 198, 46);
         contentPane.add(lblSave);
         lblSave.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 String itemName = textField_ItemName.getText();
-                String itemStatus = textField_ItemStatus.getText();
-                String itemDate = textField_ItemDate.getText();
+                String itemImage = getInsertedImagePath();
+                String itemStatus = (String) comboBox_ItemStatus.getSelectedItem();
                 String itemDescription = textField_ItemDescription.getText();
-
-                if (!itemName.isEmpty() && !itemStatus.isEmpty() && !itemDate.isEmpty() && !itemDescription.isEmpty() && lblDisplayImage.getIcon() != null) {
+                
+                if (!itemName.isEmpty() && !itemDescription.isEmpty() && lblDisplayImage.getIcon() != null) {
                     int choice = JOptionPane.showConfirmDialog(null, "Do you want to save this information?", "Save",
-                            JOptionPane.YES_NO_OPTION);
+                        JOptionPane.YES_NO_OPTION);
                     if (choice == JOptionPane.YES_OPTION) {
-                        // Create a panel to display the information and image
-                        JPanel panel = new JPanel();
-                        panel.setLayout(null);
-                        panel.setPreferredSize(new Dimension(600, 200));
-
-                      
-                        JLabel imageLabel = new JLabel();
-                        imageLabel.setBounds(10, 10, lblDisplayImage.getWidth(), lblDisplayImage.getHeight());
-                        imageLabel.setIcon(lblDisplayImage.getIcon());
-                        panel.add(imageLabel);
-
-                        JLabel nameLabel = new JLabel("Item Name: " + itemName);
-                        nameLabel.setBounds(150, 10, 300, 20);
-                        panel.add(nameLabel);
-
-                        JLabel statusLabel = new JLabel("Item Status: " + itemStatus);
-                        statusLabel.setBounds(150, 40, 300, 20);
-                        panel.add(statusLabel);
-
-                        JLabel dateLabel = new JLabel("Item Date: " + itemDate);
-                        dateLabel.setBounds(150, 70, 300, 20);
-                        panel.add(dateLabel);
-
-                        JLabel descriptionLabel = new JLabel("Item Description: " + itemDescription);
-                        descriptionLabel.setBounds(150, 100, 300, 20);
-                        panel.add(descriptionLabel);
-
-                        // Add the panel to your desired layout
-                        // For example, if you have a container called 'container', you can add the panel as follows:
-                        // container.add(panel);
-
-                        JOptionPane.showMessageDialog(null, "SUCCESSFULLY ADDED", "Success",
-                                JOptionPane.INFORMATION_MESSAGE);
-                        
-                        // Clear the displayed image and text fields
+                        String itemDate = lblDate.getText();
+                        saveItem(itemName, itemImage, itemStatus, itemDate, itemDescription);
+                        JOptionPane.showMessageDialog(null, "Information Saved!", "Saved",
+                            JOptionPane.INFORMATION_MESSAGE);
                         lblDisplayImage.setIcon(null);
                         textField_ItemName.setText("");
-                        textField_ItemStatus.setText("");
-                        textField_ItemDate.setText("");
+                        comboBox_ItemStatus.setSelectedIndex(0);
                         textField_ItemDescription.setText("");
-                        
+                        comboBox_ItemStatus.setSelectedIndex(0);
+                        lblDate.setText("");
                     }
                 } else {
                     JOptionPane.showMessageDialog(null, "Please enter all information!", "Error",
@@ -238,11 +214,92 @@ public class AddItems extends JFrame {
                 }
             }
         });
-
-        lblBg = new JLabel("");
+        
+        lblClear = new JLabel("");
+        lblClear.setBounds(996, 628, 204, 46);
+        contentPane.add(lblClear);
+        lblClear.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblDisplayImage.setIcon(null);
+                textField_ItemName.setText("");         
+                textField_ItemDescription.setText("");
+                comboBox_ItemStatus.setSelectedIndex(0);
+                lblDate.setText("");
+            }
+        });
+        
+        comboBox_ItemStatus = new JComboBox<>();
+        comboBox_ItemStatus.setBounds(640, 359, 263, 51);
+        comboBox_ItemStatus.addItem("AVAILABLE");
+        comboBox_ItemStatus.addItem("NOT AVAILABLE");
+        contentPane.add(comboBox_ItemStatus);
+        
+        comboBox_Month = new JComboBox<>(new String[]{
+            "January", "February", "March", "April", "May", "June", "July", "August", "September",
+            "October", "November", "December"
+        });
+        
+        comboBox_Day = new JComboBox<>(new String[]{
+            "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12",
+            "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24",
+            "25", "26", "27", "28", "29", "30", "31"
+        });
+        
+        comboBox_Year = new JComboBox<>(new String[]{
+            "2023", "2024", "2025", "2026"
+        });
+        
+        JButton btnAddDate = new JButton("Add Date");
+        btnAddDate.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                JPanel panel = new JPanel(new GridLayout(3, 2));
+                panel.add(new JLabel("Month:"));
+                panel.add(comboBox_Month);
+                panel.add(new JLabel("Day:"));
+                panel.add(comboBox_Day);
+                panel.add(new JLabel("Year:"));
+                panel.add(comboBox_Year);
+                
+                int result = JOptionPane.showConfirmDialog(null, panel, "Select Date", JOptionPane.OK_CANCEL_OPTION);
+                if (result == JOptionPane.OK_OPTION) {
+                    String selectedMonth = (String) comboBox_Month.getSelectedItem();
+                    String selectedDay = (String) comboBox_Day.getSelectedItem();
+                    String selectedYear = (String) comboBox_Year.getSelectedItem();
+                    String selectedDate = selectedMonth + " " + selectedDay + " " + selectedYear;
+                    
+                    int confirmResult = JOptionPane.showConfirmDialog(null, "Are you sure that the date is correct?", "Confirmation", JOptionPane.YES_NO_OPTION);
+                    if (confirmResult == JOptionPane.YES_OPTION) {
+                        lblDate.setText(selectedDate);
+                        JOptionPane.showMessageDialog(null, "Updated Successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+                    }
+                }
+            }
+        });
+        btnAddDate.setBounds(640, 559, 85, 21);
+        contentPane.add(btnAddDate);
+        
+        lblDate = new JLabel("");
+        lblDate.setBounds(640, 487, 263, 46);
+        contentPane.add(lblDate);
+        
+        JLabel lblBg = new JLabel("");
         lblBg.setIcon(new ImageIcon("D:\\Users\\63916\\Downloads\\AddItemsGUI.png"));
-        lblBg.setBounds(0, 0, 1280, 790);
+        lblBg.setBounds(0, 0, 1280, 800);
         contentPane.add(lblBg);
     }
+    
+    public void saveItem(String name, String image, String status, String date, String description) {
+        try {
+            BufferedWriter writer = new BufferedWriter(new FileWriter("C:\\Users\\NITRO 5\\eclipse-workspace\\RentalSystem\\src\\Tools", true));
+            writer.write(name + "|" + image + "|" + status + "|" + date + "|" + description);
+            writer.newLine();
+            writer.close();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+    
+    public String getInsertedImagePath() {
+        return insertedImage;
+    }
 }
-
