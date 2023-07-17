@@ -20,6 +20,7 @@ public class ItemTracker extends JFrame {
         setBounds(new Rectangle(0, 0, 1280, 761));
         setTitle("Damage & Loss Reports");
         setSize(1280, 761);
+        setResizable(false);
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         addWindowListener(new WindowAdapter() {
             @Override
@@ -116,7 +117,7 @@ public class ItemTracker extends JFrame {
         Toolsbtn.setBorderPainted(false);
         mainPanel.add(Toolsbtn);
 
-        // Action listener for the Tools button	
+     // Action listener for the Tools button	
         Toolsbtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -135,6 +136,16 @@ public class ItemTracker extends JFrame {
         Logoutbtn.setContentAreaFilled(false);
         Logoutbtn.setBorderPainted(false);
         mainPanel.add(Logoutbtn);
+        
+        Logoutbtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Code to navigate to the LoginGUI class
+                AdminLogin loginGUI = new AdminLogin();
+                loginGUI.setVisible(true);
+                dispose(); // Close the current window
+            }
+        });
 
         Logoutbtn.addActionListener(new ActionListener() {
             @Override
@@ -161,10 +172,6 @@ public class ItemTracker extends JFrame {
         backgroundLbl.setIcon(new ImageIcon("D:\\Users\\63916\\Downloads\\ReportsGUI.png"));
         backgroundLbl.setBounds(0, 0, 1280, 761);
         mainPanel.add(backgroundLbl);
-
-        JScrollPane scrollPane = new JScrollPane();
-        scrollPane.setBounds(1073, 46, 2, 2);
-        mainPanel.add(scrollPane);
 
         addStudentButton.addActionListener(new ActionListener() {
             @Override
@@ -287,7 +294,7 @@ public class ItemTracker extends JFrame {
                         String hour = (String) hourComboBox.getSelectedItem();
                         String minute = (String) minuteComboBox.getSelectedItem();
                         String time = (String) timeComboBox.getSelectedItem();
-                        String report = "Equipment: " + quantity+  equipment+ " - Date Last Used: " + month + "/" + day + "/" + year + " - Time: " + hour + ":"+minute +time;
+                        String report = "Equipment: " + quantity+ " " +equipment+ " - Date Last Used: " + month + "/" + day + "/" + year + " - Time: " + hour + ":"+minute +time;
                         itemListModel.addElement(report);
                         saveReportsToFile();
                     }
