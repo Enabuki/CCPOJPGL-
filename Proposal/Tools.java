@@ -1,4 +1,4 @@
-public class Tools{
+public class Tools {
 
     private String itemName;
     private String itemImage;
@@ -72,4 +72,3 @@ public class Tools{
         itemCounter++;
     }
 
-}
