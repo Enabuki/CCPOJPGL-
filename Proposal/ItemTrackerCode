@@ -1,0 +1,11 @@
+
+lblItemTracker = new JLabel("");
+lblItemTracker.setBounds(1201, 21, 55, 62);
+contentPane.add(lblItemTracker);
+lblItemTracker.addMouseListener(new java.awt.event.MouseAdapter() {
+           public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ItemTracker itemtracker = new ItemTracker();
+                itemtracker.setVisible(true);
+                dispose();
+            }
+        });
