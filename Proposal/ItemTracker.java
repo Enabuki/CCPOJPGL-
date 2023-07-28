@@ -21,7 +21,7 @@ import javax.swing.border.*;
 	
 	
 	    public ItemTracker() {
-	    	setBounds(new Rectangle(0, 0, 1280, 761));
+	    	setBounds(new Rectangle(0, 0, 1280, 765));
 	        setTitle("Item Tracker");
 	        setSize(1280, 761);
 	        setResizable(false);
