@@ -111,7 +111,7 @@ import javax.swing.border.*;
 	            public void actionPerformed(ActionEvent e) {
 	                int option = JOptionPane.showConfirmDialog(
 	                    ItemTracker.this,
-	                    "Process will not be saved if you wish to go back to the homepage. Do you wish to continue.?",
+	                    "Do you want to proceed without saving your progress? Any unsaved changes will be lost if you choose to continue.",
 	                    "Confirmation",
 	                    JOptionPane.YES_NO_OPTION
 	                );
@@ -178,7 +178,7 @@ import javax.swing.border.*;
 	            public void actionPerformed(ActionEvent e) {
 	                int option = JOptionPane.showConfirmDialog(
 	                    ItemTracker.this,
-	                    "Process will not be saved if you wish to go back to the homepage. Do you wish to continue.?",
+	                    "Do you want to proceed without saving your progress? Any unsaved changes will be lost if you choose to continue.",
 	                    "Confirmation",
 	                    JOptionPane.YES_NO_OPTION
 	                );
@@ -194,7 +194,7 @@ import javax.swing.border.*;
 	        
 	
 	        JLabel backgroundLbl = new JLabel();
-	        backgroundLbl.setIcon(new ImageIcon("D:\\Users\\63916\\Downloads\\ReportsGUI.png"));
+	        backgroundLbl.setIcon(new ImageIcon("D:\\Users\\63916\\Downloads\\ToolsGUI.png"));
 	        backgroundLbl.setBounds(0, 0, 1280, 761);
 	        mainPanel.add(backgroundLbl);
 	
