@@ -111,7 +111,7 @@ public class AddItems extends JFrame {
         	public void mouseClicked(java.awt.event.MouseEvent evt) {
                 int option = JOptionPane.showConfirmDialog(
                     AddItems.this,
-                    "Do you want to proceed without saving your progress? Any unsaved changes will be lost if you choose to continue",
+                    "Do you want to proceed without saving your progress? Any unsaved changes will be lost if you choose to continue.",
                     "Confirmation",
                     JOptionPane.YES_NO_OPTION
                 );
@@ -141,7 +141,7 @@ public class AddItems extends JFrame {
         	public void mouseClicked(java.awt.event.MouseEvent evt) {
                 int option = JOptionPane.showConfirmDialog(
                     AddItems.this,
-                    "Do you want to proceed without saving your progress? Any unsaved changes will be lost if you choose to continue",
+                    "Do you want to proceed without saving your progress? Any unsaved changes will be lost if you choose to continue.",
                     "Confirmation",
                     JOptionPane.YES_NO_OPTION
                 );
@@ -321,3 +321,4 @@ public class AddItems extends JFrame {
         return insertedImage;
     }
 }
+
