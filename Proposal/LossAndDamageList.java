@@ -100,12 +100,21 @@ public class LossAndDamageList extends JFrame {
         Homebtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Code to navigate to the HomeGUI class
-                HomePage homepage = new HomePage();
-                homepage.setVisible(true);
-                dispose(); // Close the current window
+                int option = JOptionPane.showConfirmDialog(
+                    LossAndDamageList.this,
+                    "Do you want to proceed without saving your progress? Any unsaved changes will be lost if you choose to continue.",
+                    "Confirmation",
+                    JOptionPane.YES_NO_OPTION
+                );
+                if (option == JOptionPane.YES_OPTION) {
+                    // Code to navigate to the HomeGUI class
+                    HomePage homepage = new HomePage();
+                    homepage.setVisible(true);
+                    dispose(); // Close the current window
+                }
             }
         });
+
 
         JButton Toolsbtn = new JButton("");
         Toolsbtn.setFont(new Font("Tw Cen MT", Font.BOLD, 20));
@@ -119,13 +128,21 @@ public class LossAndDamageList extends JFrame {
         Toolsbtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Code to navigate to the ToolsGUI class
-                ToolsGUI toolsGUI = new ToolsGUI();
-                toolsGUI.setVisible(true);
-                dispose(); // Close the current window
+                int option = JOptionPane.showConfirmDialog(
+                    LossAndDamageList.this,
+                    "Do you want to proceed without saving your progress? Any unsaved changes will be lost if you choose to continue.",
+                    "Confirmation",
+                    JOptionPane.YES_NO_OPTION
+                );
+                if (option == JOptionPane.YES_OPTION) {
+                    // Code to navigate to the HomeGUI class
+                    HomePage homepage = new HomePage();
+                    homepage.setVisible(true);
+                    dispose(); // Close the current window
+                }
             }
         });
-        
+
         // Action listener for the Logout button	
         JButton Logoutbtn = new JButton("");
         Logoutbtn.setFont(new Font("Tw Cen MT", Font.BOLD, 20));
