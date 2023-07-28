@@ -108,10 +108,18 @@ public class AddItems extends JFrame {
         lblHomeTab.setBounds(25, 194, 112, 41);
         contentPane.add(lblHomeTab);
         lblHomeTab.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                HomePage homePage = new HomePage();
-                homePage.setVisible(true);
-                dispose();
+        	public void mouseClicked(java.awt.event.MouseEvent evt) {
+                int option = JOptionPane.showConfirmDialog(
+                    AddItems.this,
+                    "Do you want to proceed without saving your progress? Any unsaved changes will be lost if you choose to continue",
+                    "Confirmation",
+                    JOptionPane.YES_NO_OPTION
+                );
+                if (option == JOptionPane.YES_OPTION) {
+                    HomePage homePage = new HomePage();
+                    homePage.setVisible(true);
+                    dispose();
+                }
             }
         });
 
@@ -130,12 +138,21 @@ public class AddItems extends JFrame {
         lblReportsTab.setBounds(23, 310, 139, 46);
         contentPane.add(lblReportsTab);
         lblReportsTab.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                LossAndDamageList lossAndDamageList = new LossAndDamageList();
-                lossAndDamageList.setVisible(true);
-                dispose();
+        	public void mouseClicked(java.awt.event.MouseEvent evt) {
+                int option = JOptionPane.showConfirmDialog(
+                    AddItems.this,
+                    "Do you want to proceed without saving your progress? Any unsaved changes will be lost if you choose to continue",
+                    "Confirmation",
+                    JOptionPane.YES_NO_OPTION
+                );
+                if (option == JOptionPane.YES_OPTION) {
+                	LossAndDamageList lossAndDamageList = new LossAndDamageList();
+                    lossAndDamageList.setVisible(true);
+                    dispose();
+                }
             }
         });
+
 
         lblLogoutTab = new JLabel("");
         lblLogoutTab.setBounds(25, 371, 127, 46);
@@ -304,4 +321,3 @@ public class AddItems extends JFrame {
         return insertedImage;
     }
 }
-
