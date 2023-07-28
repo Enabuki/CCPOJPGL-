@@ -109,10 +109,18 @@ import javax.swing.border.*;
 	        Homebtn.addActionListener(new ActionListener() {
 	            @Override
 	            public void actionPerformed(ActionEvent e) {
-	                // Code to navigate to the HomeGUI class
-	                HomePage homepage = new HomePage();
-	                homepage.setVisible(true);
-	                dispose(); // Close the current window
+	                int option = JOptionPane.showConfirmDialog(
+	                    ItemTracker.this,
+	                    "Process will not be saved if you wish to go back to the homepage. Do you wish to continue.?",
+	                    "Confirmation",
+	                    JOptionPane.YES_NO_OPTION
+	                );
+	                if (option == JOptionPane.YES_OPTION) {
+	                    // Code to navigate to the HomeGUI class
+	                    HomePage homepage = new HomePage();
+	                    homepage.setVisible(true);
+	                    dispose(); // Close the current window
+	                }
 	            }
 	        });
 	
@@ -164,6 +172,24 @@ import javax.swing.border.*;
 			ReportListbtn.setContentAreaFilled(false);
 			ReportListbtn.setBorderPainted(false);
 	        mainPanel.add(ReportListbtn);
+	        
+	        ReportListbtn.addActionListener(new ActionListener() {
+	            @Override
+	            public void actionPerformed(ActionEvent e) {
+	                int option = JOptionPane.showConfirmDialog(
+	                    ItemTracker.this,
+	                    "Process will not be saved if you wish to go back to the homepage. Do you wish to continue.?",
+	                    "Confirmation",
+	                    JOptionPane.YES_NO_OPTION
+	                );
+	                if (option == JOptionPane.YES_OPTION) {
+	                    // Code to navigate to the HomeGUI class
+	                	LossAndDamageList lossAndDamageList = new LossAndDamageList();
+	                    lossAndDamageList.setVisible(true);
+	                    dispose(); // Close the current window
+	                }
+	            }
+	        });
 	
 	        
 	
